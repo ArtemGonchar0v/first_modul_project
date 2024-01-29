@@ -7,10 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 public class ImputValidation {
     public static void validateInput(String[] args) {
-        if (args.length < 2) {
+        if (args.length < 2) { // minimum of arguments for application
             throw new InvalidArgumentException("Command and File are required!");
         }
-        if (args.length > 3) {
+        if (args.length > 3) { // maximum of arguments for application
             throw new InvalidArgumentException("More than 3 arguments");
         }
     }
@@ -49,7 +49,7 @@ public class ImputValidation {
             if (num <= 0){
                 throw new InvalidArgumentException("The key must be > 0");
             }
-            if (num > 12){
+            if (num > 12){ // I added 12 keySymbols to the bruteForce
                 throw new InvalidArgumentException("The key must be no more than 12");
             }
         }
