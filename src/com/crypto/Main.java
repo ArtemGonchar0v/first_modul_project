@@ -1,17 +1,23 @@
 package com.crypto;
 
-import com.crypto.service.DecryptService;
+import com.crypto.service.BruteForceService;
 import com.crypto.service.EncryptService;
+import com.crypto.util.Run;
 
 import java.io.File;
 
+import static com.crypto.util.ImputValidation.*;
+
 public class Main {
+    private static final int COMMAND_ARGUMENT_POSITION = 0;
+    private static final int FILE_PATH_ARGUMENT_POSITION = 1;
+    private static final int KEY_ARGUMENT_POSITION = 2;
+
     public static void main(String[] args) {
-        File startFile = new File("D:\\JRprojects\\first_modul_project\\test.txt");
-        EncryptService encryptService = new EncryptService();
-        encryptService.encrypt(startFile, 2);
-        File encrypted = new File("D:\\JRprojects\\first_modul_project\\[ENCRYPTED]test.txt");
-        DecryptService decryptService = new DecryptService();
-        decryptService.decrypt(encrypted,2);
+        validateInput(args);
+        validateCommand(args[COMMAND_ARGUMENT_POSITION]);
+        validateFilePath(args[FILE_PATH_ARGUMENT_POSITION]);
+        validateKey(args[KEY_ARGUMENT_POSITION]);
+        Run.run(args);
     }
 }
