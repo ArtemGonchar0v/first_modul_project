@@ -11,11 +11,11 @@ public class EncryptService {
     private BruteForceHelper bruteForceHelper = new BruteForceHelper();
 
     public void encrypt(File file, int key) {
-            String fileName = file.getName();
-            String text = "";
-            text = fileService.readUsingFiles(fileName);
-            text = textTransformer.moveLettersOnRightPosition(key, text);
-            fileService.writeStringInFile("[ENCRYPTED]" + fileName,text + bruteForceHelper.addBruteForce(key));// add brute force point
+        String fileName = file.getName();
+        String text = "";
+        text = fileService.readUsingFiles(fileName);
+        text = textTransformer.moveLettersOnRightPosition(key, text);
+        fileService.writeStringInFile("[ENCRYPTED]" + fileName, text + bruteForceHelper.addBruteForce(key));// add brute force point
     }
 
 }

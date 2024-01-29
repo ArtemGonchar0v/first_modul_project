@@ -5,25 +5,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BruteForceHelper {
-    public Integer getBruteForceKey(String value){
+    public Integer getBruteForceKey(String value) {
         Map<Integer, String> keys = bruteForceSymbols();
         ArrayList<Integer> keySet = new ArrayList<>(keys.keySet());
         for (Integer key : keySet) {
             String str = keys.get(key);
-            if (key != 0 ){
-                if (value.equals(str)){
+            if (key != 0) {
+                if (value.equals(str)) {
                     return key;
                 }
             }
         }
         return null;
     }
-    public String addBruteForce(int key){
+
+    public String addBruteForce(int key) {
         Map<Integer, String> keys = bruteForceSymbols();
         String bruteForce = keys.get(key);
         return bruteForce;
     }
-    private Map<Integer, String> bruteForceSymbols(){
+
+    private Map<Integer, String> bruteForceSymbols() {
         Map<Integer, String> keyMap = new HashMap<>();
         keyMap.put(1, "!");
         keyMap.put(2, "@");
