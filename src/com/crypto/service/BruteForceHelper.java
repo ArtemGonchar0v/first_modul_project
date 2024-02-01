@@ -10,10 +10,8 @@ public class BruteForceHelper {
         ArrayList<Integer> keySet = new ArrayList<>(keys.keySet());
         for (Integer key : keySet) {
             String str = keys.get(key);
-            if (key != 0) {
-                if (value.equals(str)) {
+            if (key != 0 && value.equals(str)) {
                     return key;
-                }
             }
         }
         return null;
