@@ -5,12 +5,15 @@ import com.crypto.model.Mode;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-public class ImputValidation {
+public class InputValidation {
     public static void validateInput(String[] args) {
-        if (args.length < 2) { // minimum of arguments for application
+        int minArguments = 2;
+        int maxArguments = 3;
+
+        if (args.length < minArguments) {
             throw new InvalidArgumentException("Command and File are required!");
         }
-        if (args.length > 3) { // maximum of arguments for application
+        if (args.length > maxArguments) {
             throw new InvalidArgumentException("More than 3 arguments");
         }
     }
@@ -41,6 +44,7 @@ public class ImputValidation {
     public static void validateKey(String key){
         boolean isOnlyDigits = true;
         int num = Integer.parseInt(key);
+        int maxKeyValue = 12;
         for(int i = 0; i < key.length() && isOnlyDigits; i++) {
             if(!Character.isDigit(key.charAt(i))) {
                 isOnlyDigits = false;
@@ -49,7 +53,7 @@ public class ImputValidation {
             if (num <= 0){
                 throw new InvalidArgumentException("The key must be > 0");
             }
-            if (num > 12){ // I added 12 keySymbols to the bruteForce
+            if (num > maxKeyValue){
                 throw new InvalidArgumentException("The key must be no more than 12");
             }
         }
