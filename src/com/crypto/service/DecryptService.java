@@ -10,12 +10,10 @@ public class DecryptService {
 
     public void decrypt(File file, int key) {
         String fileName = file.getName();
-        File f = new File("D:\\JavaRushProjects\\test.txt");
+        File f = new File(file.getAbsolutePath());
         String text = "";
         text = fileService.readUsingFiles(fileName);
         text = textTransformer.moveLettersOnLeftPosition(key, text);
         fileService.writeStringInFile("[DECRYPTED]" + f.getName(), text);
-
-
     }
 }
