@@ -43,12 +43,14 @@ public class TextTransformer {
 
     private ArrayList<String> prepareAlphabet(int move, int mode) {
         ArrayList<String> newAlphabet = new ArrayList<>();
+        int moveLettersOnRightPosition = 1;
+        int moveLettersOnLeftPosition = 0;
 
         if (move > Alphabets.ENGLISH_ALPHABET.size()) {
             move = move % Alphabets.ENGLISH_ALPHABET.size();
         }
 
-        if (mode == 1) { // if mode = 1 move letters on right position
+        if (mode == moveLettersOnRightPosition) {
             for (int i = 0; i < Alphabets.ENGLISH_ALPHABET.size(); i++) {
                 if (move >= Alphabets.ENGLISH_ALPHABET.size()) {
                     move = 0;
@@ -59,7 +61,7 @@ public class TextTransformer {
             }
         }
 
-        if (mode == 0) { // if mode = 0 move letters on left position
+        if (mode == moveLettersOnLeftPosition) {
             for (int i = 0; i < Alphabets.ENGLISH_ALPHABET.size(); i++) {
                 newAlphabet.add(Alphabets.ENGLISH_ALPHABET.get((i + move) % Alphabets.ENGLISH_ALPHABET.size()));
             }
