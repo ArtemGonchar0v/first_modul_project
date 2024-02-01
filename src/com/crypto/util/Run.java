@@ -8,8 +8,8 @@ import java.io.File;
 
 import static com.crypto.Main.*;
 import static com.crypto.model.Mode.*;
-import static com.crypto.util.ImputValidation.*;
-import static com.crypto.util.ImputValidation.validateKey;
+import static com.crypto.util.InputValidation.*;
+import static com.crypto.util.InputValidation.validateKey;
 
 public class Run {
     private static EncryptService encryptService = new EncryptService();
@@ -21,14 +21,16 @@ public class Run {
         validateFilePath(args[FILE_PATH_ARGUMENT_POSITION]);
         validateKey(args[KEY_ARGUMENT_POSITION]);
 
-        if (args[0].equals(ENCRYPT.toString())){
-            encryptService.encrypt(new File(args[1]), Integer.parseInt(args[2]));
+        if (args[COMMAND_ARGUMENT_POSITION].equals(ENCRYPT.toString())){
+            encryptService.encrypt(new File(args[FILE_PATH_ARGUMENT_POSITION]),
+                    Integer.parseInt(args[KEY_ARGUMENT_POSITION]));
         }
-        else if (args[0].equals(DECRYPT.toString())){
-            decryptService.decrypt(new File(args[1]), Integer.parseInt(args[2]));
+        else if (args[COMMAND_ARGUMENT_POSITION].equals(DECRYPT.toString())){
+            decryptService.decrypt(new File(args[FILE_PATH_ARGUMENT_POSITION]),
+                    Integer.parseInt(args[KEY_ARGUMENT_POSITION]));
         }
         else {
-            bruteForceService.decrypt(new File(args[1]));
+            bruteForceService.decrypt(new File(args[FILE_PATH_ARGUMENT_POSITION]));
         }
     }
 }
